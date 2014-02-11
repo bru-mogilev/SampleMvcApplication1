@@ -16,5 +16,12 @@ namespace SampleMvcApplication1.Controllers
             return View();
         }
 
+        //
+        // GET: /Home/Help
+
+        public ActionResult Help()
+        {
+            return View();
+        }
     }
 }

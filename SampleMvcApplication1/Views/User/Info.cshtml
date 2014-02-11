@@ -1,0 +1,24 @@
+﻿@model SampleMvcApplication1.Models.UserModel
+
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null)
+{
+    <div>
+        <span>Привет!</span><br />
+        <span>Мой id: <b>@Model.UserId</b> </span><br />
+        <span>Меня зовут: <b>@Model.UserName</b> </span><br />
+        <span>Мой email: <b>@Model.Email</b> </span><br />
+    </div>
+}
+else
+{
+    <div>
+        <span>Привет! Как жаль, что меня не существует =(</span><br />
+    </div>
+}
+<br />
+<br />

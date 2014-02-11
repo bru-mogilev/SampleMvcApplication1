@@ -3,4 +3,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Hello my name is &laquo;Index&raquo;. I live in &laquo;Home&raquo; controller.</h2>
+<span>My url is: <b>@Request.Url.ToString()</b></span>
+<br />
+<br />
+
+<a href="/">/</a><br />
+<a href="/Home">/Home</a><br />
+<a href="/Home/Index">/Home/Index</a><br />
+<a href="/Home/Index?someParam=foo">/Home/Index?someParam=foo</a><br />
+<br />
+
+<a href="/Home/Help">/Home/Help</a><br />
+<br />
+
+<a href="/User">/User</a><br />
+<a href="/User/Index">/User/Index</a><br />
+<br />
+
+<a href="/User/Info/5">/User/Info/5</a><br />
+<a href="/User/Info?id=5">/User/Info?id=5</a><br />
+<br />
+<br />

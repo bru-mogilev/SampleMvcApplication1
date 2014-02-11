@@ -1,0 +1,21 @@
+﻿@model IEnumerable<SampleMvcApplication1.Models.UserModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Info", "User", new { id = user.UserId })">@user.UserName</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<br />
