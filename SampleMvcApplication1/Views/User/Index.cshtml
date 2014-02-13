@@ -1,21 +1,24 @@
 ﻿@model IEnumerable<SampleMvcApplication1.Models.UserModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Пользователи";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<table>
-    <tbody>
-        @foreach (var user in Model)
-        {
-            <tr>
-                <td>
-                    <a href="@Url.Action("Info", "User", new { id = user.UserId })">@user.UserName</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-<br />
-<br />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>
+                            <a href="@Url.Action("Info", "User", new { id = user.UserId })">Подробнее &raquo;</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

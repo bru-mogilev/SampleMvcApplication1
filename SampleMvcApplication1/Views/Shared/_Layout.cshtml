@@ -4,32 +4,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Content-Language" content="ru-RU">
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")">
 
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+
+    @Styles.Render("~/content/css")
+    @Scripts.Render("~/scripts/modernizr")
 </head>
 <body>
-    @RenderBody()
-    
-    @{
-        var year = DateTime.UtcNow.Year.ToString(CultureInfo.InvariantCulture);
-        if (!"2014".Equals(year))
-        {
-            year = "2014-" + year;
+    <div class="jumbotron text-center">
+        <h1>SampleMvcApplication1</h1>
+    </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <div class="container">
+        @{
+            var year = DateTime.UtcNow.Year.ToString(CultureInfo.InvariantCulture);
+            if (!"2014".Equals(year))
+            {
+                year = "2014-" + year;
+            }
         }
-    }
 
-    <footer class="text-center">
-        SampleMvcApplication1&nbsp;v&nbsp;@typeof(HomeController).Assembly.GetName().Version&nbsp;&copy;&nbsp;@year Pavel S. Zaitsau<br />
-        Специально для И.А.Евсеенко<br />
-    </footer>
-
-    @Scripts.Render("~/bundles/jquery")
+        <hr />
+        <footer class="text-center">
+            SampleMvcApplication1&nbsp;v&nbsp;@typeof(HomeController).Assembly.GetName().Version&nbsp;&copy;&nbsp;@year Pavel S. Zaitsau<br />
+            Специально для И.А.Евсеенко<br />
+        </footer>
+    </div>
+    @Scripts.Render("~/scripts/common")
     @RenderSection("scripts", required: false)
 </body>
 </html>

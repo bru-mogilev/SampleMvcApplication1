@@ -1,24 +1,28 @@
 ﻿@model SampleMvcApplication1.Models.UserModel
 
 @{
-    ViewBag.Title = "Info";
+    ViewBag.Title = "Информация о пользователе.";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (Model != null)
-{
-    <div>
-        <span>Привет!</span><br />
-        <span>Мой id: <b>@Model.UserId</b> </span><br />
-        <span>Меня зовут: <b>@Model.UserName</b> </span><br />
-        <span>Мой email: <b>@Model.Email</b> </span><br />
+<div class="container well col-md-6">
+    <div class="row">
+        @if (Model != null)
+        {
+            <div class="col-md-2">
+                <img src="http://placehold.it/140/2B669A/000000" class="img-circle img-responsive" />
+            </div>
+            <div class="col-md-8">
+                <h3>@Model.UserName</h3>
+                <h6>Email: @Model.Email</h6>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-offset-2 col-md-8">
+                <h3>Привет!</h3>
+                <h6> Как жаль, что меня не существует =(</h6>
+            </div>
+        }
     </div>
-}
-else
-{
-    <div>
-        <span>Привет! Как жаль, что меня не существует =(</span><br />
-    </div>
-}
-<br />
-<br />
+</div>

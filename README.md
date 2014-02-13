@@ -13,3 +13,6 @@
   * Controller и Action
   * Routing
   * Модели
+3. Twitter Bootstrap и bundles
+  * Установка пакета
+  * Верстка
