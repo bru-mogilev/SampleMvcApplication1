@@ -8,17 +8,24 @@
 <div class="row">
     <div class="col-md-12">
         <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th></th>
+                </tr>
+            </thead>
             <tbody>
                 @foreach (var user in Model)
                 {
                     <tr>
-                        <td>@user.UserName</td>
+                        <td><a href="@Url.Action("Info", "User", new { id = user.UserId })">@user.UserName</a></td>
                         <td>
-                            <a href="@Url.Action("Info", "User", new { id = user.UserId })">Подробнее &raquo;</a>
+                            <a href="@Url.Action("Update", "User", new { id = user.UserId })">Редактировать</a>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
+        <a href="@Url.Action("Add", "User")" class="btn btn-success">Добавить пользователя</a>
     </div>
 </div>

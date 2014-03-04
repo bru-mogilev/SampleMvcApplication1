@@ -1,0 +1,41 @@
+﻿@model SampleMvcApplication1.Models.UserModel
+
+@{
+    ViewBag.Title = "Редактирование пользователя";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container well col-md-6">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Update", "User", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                <div class="form-group">
+                    <label for="UserName" class="col-sm-4 control-label">Имя пользователя</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Имя пользователя" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Email" class="col-sm-4 control-label">Email</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Description" class="col-sm-4 control-label">Описание пользователя</label>
+                    <div class="col-sm-8">
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", placeholder = "Описание пользователя" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <a href="@Url.Action("Index", "User")" class="btn btn-primary pull-left">Отмена</a>
+                        <button type="submit" class="btn btn-success pull-right">Сохранить</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

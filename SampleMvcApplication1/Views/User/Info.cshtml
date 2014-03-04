@@ -1,20 +1,36 @@
 ﻿@model SampleMvcApplication1.Models.UserModel
 
 @{
-    ViewBag.Title = "Информация о пользователе.";
+    ViewBag.Title = "Информация о пользователе";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container well col-md-6">
+<div class="container col-md-6">
     <div class="row">
         @if (Model != null)
         {
-            <div class="col-md-2">
-                <img src="http://placehold.it/140/2B669A/000000" class="img-circle img-responsive" />
-            </div>
-            <div class="col-md-8">
-                <h3>@Model.UserName</h3>
-                <h6>Email: @Model.Email</h6>
+            <div class="col-md-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <b class="lead"> @Model.UserName</b> (@Model.Email)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Описание пользователя</label>
+                        <div class="col-sm-8">
+                            <div class="well">
+                                @Model.Description
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <a href="@Url.Action("Index", "User")" class="btn btn-primary pull-left">&lt;&nbsp; списку</a>
+                            <a href="@Url.Action("Update", "User", new { id = Model.UserId })" class="btn btn-primary pull-right">Редактировать</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         }
         else

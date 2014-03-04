@@ -1,41 +1,64 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using SampleMvcApplication1.ApplicationServices.Queries;
+using SampleMvcApplication1.ApplicationServices.Tasks;
+using SampleMvcApplication1.Intefaces;
 using SampleMvcApplication1.Models;
 
 namespace SampleMvcApplication1.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IEnumerable<UserModel> _users;
+        private readonly IUsersQuery _usersQuery;
+
+        private readonly IAddUserTask _addUserTask;
+
+        private readonly IUpdateUserTask _updateUserTask;
 
         public UserController()
         {
-            _users = new[]
-            {
-                new UserModel { UserId = 4,  UserName = "Arden",       Email = "Curae@nec.edu" },
-                new UserModel { UserId = 5,  UserName = "Tanner",      Email = "vulputate.ullamcorper@volutpatnunc.co.uk" },
-                new UserModel { UserId = 6,  UserName = "Stone",       Email = "ac.orci@ornareelitelit.org" },
-                new UserModel { UserId = 7,  UserName = "Buckminster", Email = "Sed@condimentumDonec.co.uk" },
-                new UserModel { UserId = 8,  UserName = "Basil",       Email = "non.lorem.vitae@pellentesque.net" },
-                new UserModel { UserId = 9,  UserName = "Palmer",      Email = "inceptos.hymenaeos.Mauris@dictumeuplacerat.co.uk" },
-                new UserModel { UserId = 10, UserName = "Jonah",       Email = "Cum@ligulaAliquamerat.edu" },
-                new UserModel { UserId = 11, UserName = "Ronan",       Email = "sem.elit@accumsan.ca" },
-                new UserModel { UserId = 12, UserName = "Matthew",     Email = "Maecenas.ornare@convallisestvitae.org" },
-                new UserModel { UserId = 13, UserName = "Keegan",      Email = "et@faucibusutnulla.edu" }
-            };
+            _usersQuery = new UsersQuery();
+            _addUserTask = new AddUserTask();
+            _updateUserTask = new UpdateUserTask();
         }
 
         public ActionResult Index()
         {
-            return View(_users);
+            var users = _usersQuery.GetUsers();
+            return View(users);
         }
 
         public ActionResult Info(int id)
         {
-            var user = _users.FirstOrDefault(usr => usr.UserId == id);
-
+            var user = _usersQuery.GetUser(id);
             return View(user);
+        }
+
+        [HttpGet]
+        public ActionResult Update(int id)
+        {
+            var user = _usersQuery.GetUser(id);
+            return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult Update(UserModel model)
+        {
+            _updateUserTask.UpdateUser(model);
+            return RedirectToAction("Info", new { id = model.UserId });
+        }
+
+        [HttpGet]
+        public ActionResult Add()
+        {
+            var empty = new UserModel();
+            return View(empty);
+        }
+
+        [HttpPost]
+        public ActionResult Add(UserModel model)
+        {
+            var newUserId = _addUserTask.AddUser(model);
+            return RedirectToAction("Info", new { id = newUserId });
         }
     }
 }

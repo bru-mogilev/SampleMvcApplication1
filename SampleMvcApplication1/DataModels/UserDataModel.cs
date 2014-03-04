@@ -1,6 +1,9 @@
-﻿namespace SampleMvcApplication1.Models
+using System;
+
+namespace SampleMvcApplication1.DataModels
 {
-    public class UserModel
+    [Serializable]
+    public class UserDataModel
     {
         public int UserId { get; set; }
 

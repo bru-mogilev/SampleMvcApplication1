@@ -1,8 +1,8 @@
 ﻿using System.Web.Optimization;
 
-namespace SampleMvcApplication1
+namespace SampleMvcApplication1.Configs
 {
-    public class BundleConfig
+    public static class BundleConfig
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
